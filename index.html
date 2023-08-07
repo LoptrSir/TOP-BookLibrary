@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <h1>Book Library</h1>
+    <div class="entry">
+        <p>Enter the details of your book below:</p>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="author">
+        </div>
+        <div>
+            <label for="pages">Pages</label>
+            <input type="text" id="pages">
+        </div>
+        <div>
+            <label for="read">Read</label>
+            <input type="text" id="read">
+        </div>
+        <div>
+            <button onclick="addBookToLibrary()">Add Book</button>
+        </div>
+    </div>
+
+    <!--ultimately each book div will be created as entered-->
+    
+    <!--
+    <div class="library">Library
+        <div class="book">1</div>
+        <div class="book">2</div>
+        <div class="book">3</div>
+        <div class="book">4</div>
+    </div>
+-->
+</body>
+
+</html>
