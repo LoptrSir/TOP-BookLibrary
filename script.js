@@ -45,19 +45,29 @@ function addBookToLibrary() {
 function displayLibrary() {
   // Remove any existing library containers
   const existingLibraries = document.querySelectorAll("div.library");
-  existingLibraries.forEach(existingLibrary => {
+  existingLibraries.forEach((existingLibrary) => {
     existingLibrary.remove();
   });
 
   // Create a new library container
   const libraryContainer = document.createElement("div");
   libraryContainer.className = "library"; // Apply the class "library"
-  libraryContainer.innerHTML = "<h3>Library</h3>";
+  libraryContainer.innerText = "Library";
+  //libraryContainer.innerHTML = "<h3>Library</h3>";  XSS vulnerability
 
   // Populate the new library container with book details
   myLibrary.forEach((book, index) => {
     const bookDetails = document.createElement("p");
+
+    const delBook = document.createElement('button');
+    delBook.innerText = 'Delete Book';
+
+    const readBook = document.createElement('button');
+    readBook.innerText = 'Read Book';
+
     bookDetails.textContent = `${book.info}`;
+    bookDetails.appendChild(delBook);
+    bookDetails.appendChild(readBook);
     libraryContainer.appendChild(bookDetails);
   });
 
@@ -66,35 +76,25 @@ function displayLibrary() {
 }
 // SUGGESTED CODE2 END
 
-
 // // suggested code1 Begin:
 // function displayLibrary() {
 //   // Clear previous library container content
 //   const existingLibrary = document.querySelector("div.library");
 //   if (existingLibrary) {
-//     existingLibrary.innerHTML = ''; // Clear the content of the existing library
-//   }
-
+//     existingLibrary.innerHTML = ''; // Clear the content of the existing library  }
 //   // Create a new library container
 //   const libraryContainer = document.createElement("div");
 //   libraryContainer.innerHTML = "<h3>Library</h3>";
-
 //   // Populate the new library container with book details
 //   myLibrary.forEach((book, index) => {
 //     const bookDetails = document.createElement("p");
 //     bookDetails.textContent = `Book ${index + 1}: Title- ${
-//       book.title
-//     }, Author- ${book.author}, Pages- ${book.pages}, Read- ${book.read}`;
-//     libraryContainer.appendChild(bookDetails);
-//   });
-
+//       book.title}, Author- ${book.author}, Pages- ${book.pages}, Read- ${book.read}`;
+//     libraryContainer.appendChild(bookDetails);  });
 //   // Append the new library container to the DOM
 //   if (existingLibrary) {
-//     existingLibrary.appendChild(libraryContainer);
-//   } else {
-//     document.body.appendChild(libraryContainer);
-//   }
-// }
+//     existingLibrary.appendChild(libraryContainer);  } else {
+//     document.body.appendChild(libraryContainer); }}
 // // SUGGESTED CODE1 END:
 
 // // Original code block Begin
@@ -105,7 +105,6 @@ function displayLibrary() {
 //    const bookContainer = document.createElement("div");
 //    const bookDetails = document.createElement("p");
 //    bookDetails.textContent = `${book.info}`;
-
 //    bookContainer.appendChild(bookDetails);
 //    //  bookContainer.appendChild(deleteButton);
 //    //  bookContainer.appendChild(ToggleReadButton);  //only visible if read == n
@@ -116,8 +115,5 @@ function displayLibrary() {
 //    // append only next book to existing display
 //    existingLibrary.replaceWith(libraryContainer);
 //    //existingLibrary.appendChild(libraryContainer);  // doesn't stop recreation of entire library
-//   } else {
-//    document.body.appendChild(libraryContainer);
-//   }
-// }
+//   } else { document.body.appendChild(libraryContainer);}}
 // //Original code block End
