@@ -1,6 +1,6 @@
 // ToP JS Course> Objects and Object constructors>  Book exercise // Aug 2023
 
-// TO WORK ON: ReadBook button to display- ReadBook function- Delete function-  CSS Styling
+// TO WORK ON: Delete function-  CSS Styling
 
 let myLibrary = [
   {
@@ -16,7 +16,6 @@ function book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read.toLowerCase() === "y";
-  console.log("book-", this.info);
 }
 
 function addBookToLibrary() {
@@ -36,10 +35,7 @@ function addBookToLibrary() {
     authorInput.value = "";
     pagesInput.value = "";
     readInput.value = "";
-
-    console.log("abtl-", title, author, pages, readValue);
-
-    displayLibrary();
+  displayLibrary();
   }
 }
 
@@ -54,12 +50,14 @@ function displayLibrary() {
   libraryContainer.innerText = "Library";
 
   myLibrary.forEach((book, index) => {
-    // const bookDetails = document.createElement("p"); modifying below
     const bookDetails = document.createElement("div"); // do I need a class here for css styling, I assume yes.
 
     const delBook = document.createElement("button");
     delBook.innerText = "Delete Book";
     // insert eventListener here for click
+    delBook.addEventListener('click', () => {
+      deleteBook(index)
+    });
   
     bookDetails.textContent = `${book.title} by ${book.author}, ${
       book.pages
@@ -74,17 +72,19 @@ function displayLibrary() {
       bookDetails.appendChild(readBook);
     }
 
-    console.log("br-", book.read);
     bookDetails.appendChild(delBook);
     libraryContainer.appendChild(bookDetails);
   });
 
   document.body.appendChild(libraryContainer);
-  console.log("dispL-"); //verifies function is being called
 }
+
 displayLibrary(); // needed to call hardcoded library
 
-//function deleteBook(index) {}
+function deleteBook(index) {
+  myLibrary.splice(index, 1);
+  displayLibrary();
+}
 
 function bookToRead(index) {
   myLibrary[index].read = true;
