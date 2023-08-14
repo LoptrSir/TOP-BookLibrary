@@ -24,34 +24,18 @@ function addBookToLibrary() {
   const authorInput = document.getElementById("author");
   const pagesInput = document.getElementById("pages");
   const readInput = document.getElementById("read");
-  const title = titleInput.value;     // * this section can be cleaned up with a .map() section
-  const author = authorInput.value;   //*
-  const pages = pagesInput.value;     //*
-  const readValue = readInput.value;  //*
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const pages = pagesInput.value;
+  const readValue = readInput.value;
 
   if (title && author && pages && readValue) {
     const newBook = new book(title, author, pages, readValue);
     myLibrary.push(newBook);
-    titleInput.value = "";            //*
-    authorInput.value = "";           //*
-    pagesInput.value = "";            //*
-    readInput.value = "";             //*  see below;
-    // 
-    //             //           const inputElements = [
-    //     document.getElementById("title"),
-    //     document.getElementById("author"),
-    //     document.getElementById("pages"),
-    //     document.getElementById("read"),
-    //             //            ];
-    
-    //   const values = inputElements.map((input) => {
-    //     const value = input.value;
-    //     input.value = ""; // Clear the input value
-    //     return value;
-    //   });
-    
-    //   const [title, author, pages, readValue] = values;
-
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.value = "";
 
     console.log("abtl-", title, author, pages, readValue);
 
@@ -76,27 +60,35 @@ function displayLibrary() {
     const delBook = document.createElement("button");
     delBook.innerText = "Delete Book";
     // insert eventListener here for click
-    // if (book.read === false) { modify below
-    bookDetails.textContent = `${book.title} by ${book.author}, ${book.pages} pages, ${book.read ? "this book is read." : "this book is unread."}`;
+  
+    bookDetails.textContent = `${book.title} by ${book.author}, ${
+      book.pages
+    } pages, ${book.read ? "this book is read." : "this book is unread."}`;
 
+    const readBook = document.createElement("button");
+    readBook.innerText = "Read Book";
+    readBook.addEventListener("click", () => {
+      bookToRead(index)
+    });
     if (!book.read) {
-      const readBook = document.createElement("button");
-      readBook.innerText = "Read Book";
-      // insert addEventListener here
       bookDetails.appendChild(readBook);
     }
+
     console.log("br-", book.read);
-
-    // bookDetails.textContent = // `${book.info}`; //Modified below
-    //bookDetails.textContent = `${book.title} by ${book.author}, ${book.pages} pages, ${book.read ? "this book is read." : "this book is unread."}`;
-
     bookDetails.appendChild(delBook);
     libraryContainer.appendChild(bookDetails);
   });
 
   document.body.appendChild(libraryContainer);
+  console.log("dispL-"); //verifies function is being called
 }
 displayLibrary(); // needed to call hardcoded library
 
-//function deleteBook(index) { }
-// function bookToRead(){ }
+//function deleteBook(index) {}
+
+function bookToRead(index) {
+  myLibrary[index].read = true;
+  console.log("brc-", myLibrary[index].read);
+  displayLibrary();
+  console.log("brc1-", myLibrary[index].read);
+}
