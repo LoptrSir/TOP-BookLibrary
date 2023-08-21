@@ -1,19 +1,7 @@
-/* Styling: center Book Library Header, 
-pick a spot for entering new book and give it proper spacing, 
-push footer to bottom, 
-assign Library to a grid and bold Library, 
-Library header needs to be by itself with book divs below it, on option is create a blank div to occupy second column but that seems clunky.
-Library displaying below footer.
+/* Styling: Library header needs to be by itself with book divs below it, on option is create a blank div to occupy second column but that seems clunky.
+Fix ibrary displaying below footer.
 */
 
-/*
-* {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-}
-*/
 
 * {
   margin: 0;
