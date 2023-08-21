@@ -1,6 +1,6 @@
 // ToP JS Course> Objects and Object constructors>  Book exercise // Aug 2023
 
-// TO WORK ON: Delete function-  CSS Styling
+// TO WORK ON: Delete function-  
 
 let myLibrary = [
   {
@@ -46,6 +46,7 @@ function displayLibrary() {
   });
 
   const libraryContainer = document.createElement("div");
+  libraryContainer.classList.add('book');
   libraryContainer.className = "library";
   libraryContainer.innerText = "Library";
 
