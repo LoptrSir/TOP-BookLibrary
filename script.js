@@ -113,6 +113,7 @@ function displayLibrary() {
 
     const delBook = document.createElement("button");
     delBook.innerText = "Delete Book";
+    delBook.classList.add('delete');
     delBook.addEventListener("click", () => {
       deleteBook(index);
     });
