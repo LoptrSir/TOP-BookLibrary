@@ -1,6 +1,5 @@
 // ToP JS Course> Objects and Object constructors>  Book exercise // Aug 2023
-
-// 
+// Generally satisfied
 
 let myLibrary = [
   {
@@ -113,6 +112,7 @@ function displayLibrary() {
 
     const delBook = document.createElement("button");
     delBook.innerText = "Delete Book";
+    delBook.classList.add('delete');
     delBook.addEventListener("click", () => {
       deleteBook(index);
     });
