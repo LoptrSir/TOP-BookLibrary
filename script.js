@@ -1,6 +1,5 @@
 // ToP JS Course> Objects and Object constructors>  Book exercise // Aug 2023
-
-// 
+// Generally satisfied
 
 let myLibrary = [
   {
