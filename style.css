@@ -1,0 +1,121 @@
+/* Styling: .book styling/button spacing
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*height: 100%;*/   /* causes  library to appear below footer */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(200px, 1fr) minmax(400px, 2fr) minmax(200px, 1fr)
+    minmax(200px, 1fr);
+  grid-template-rows: minmax(10px, 0.25fr) repeat(2, minmax(150px, 1fr)) minmax(
+      10px,
+      0.25fr
+    );
+  gap: 1em;
+  background-color: bisque;
+}
+
+#header {
+  grid-column: 1/5;
+  grid-row: 1;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 0;
+
+  flex: 1 1 75%;
+}
+
+.entry {
+  grid-column: 1;
+  grid-row: 2/4;
+  background-color: khaki;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  /* margin-bottom: 0.7em;  */
+  /* padding-left: 10%;  */
+  /* flex: 1 1 75%;  */
+  /* align-items: flex-start; */
+  /* justify-content: center;  */
+}
+
+.error-message {
+  color: red;
+  font-weight: bolder;
+}
+
+.enterBook {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+.enter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.7em;
+  /*  align-items: center;   */
+  /* display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;  */
+}
+
+.bookCase {
+  /* display: grid;
+  grid-template-columns: minmax(200px, 1fr) auto;
+  grid-template-rows: minmax(200px, 1fr) auto; */
+  background-color: rgb(185, 176, 240);
+  grid-column: 2/5;
+  grid-row: 2/4;
+  padding: 10px;
+  gap: 10px;
+}
+
+.library {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(1em, 1fr));
+  /* grid-template-rows: repeat(4, minmax(3em, 1fr)); */  /* Chrome seems to function the way I want and generates rows as needed without this code */
+  background-color: rgb(185, 176, 240);
+  /* grid-column: 2/5;
+  grid-row: 2/4;  */
+  /* border: solid 1px black;  */
+  margin: 5px;
+  gap: 15px;
+  padding: 5px;
+  max-height: calc(100vh - 6rem);
+}
+
+.book {
+  border: solid 1px black;
+  background-color:rgb(235, 170, 243);
+  padding: 1em;
+  
+}
+
+footer {
+  grid-column: 1/5;
+  grid-row: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+}
