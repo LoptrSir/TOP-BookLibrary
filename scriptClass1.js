@@ -1,5 +1,6 @@
 // ToP JS Course> Objects and Object constructors>  Book exercise // Aug 2023
-// make a createBook function to declutter displayBookcase
+// an effort to organize the bowl of spaghetti
+// work on display
 
 class Book {
   constructor(title, author, pages, read) {
@@ -37,12 +38,10 @@ class Library {
     const readStatement = document.getElementById("read-statement");
     const pagesStatement = document.getElementById("pages-statement");
 
-    if (
-      title &&
-      author &&
-      /^\d+$/.test(pages) &&
-      /^(y|yes|n|no)$/.test(readValue)
-    ) {
+    const isPagesValid = /^\d+$/.test(pages);
+    const isReadValid = /^(y|yes|n|no)$/.test(readValue);
+
+    if (title && author && isPagesValid && isReadValid) {
       const newBook = new Book(title, author, pages, readValue);
       this.myLibrary.push(newBook);
 
@@ -54,12 +53,12 @@ class Library {
       readStatement.textContent = "";
       pagesStatement.textContent = "";
     } else {
-      if (!/^\d+$/.test(pages)) {
+      if (!isPagesValid) {
         pagesStatement.textContent = "Pages must be a number";
       } else {
         pagesStatement.textContent = "";
       }
-      if (!/^(y|yes|n|no)$/i.test(readValue)) {
+      if (!isReadValid) {
         readStatement.textContent = "Enter Yes or No";
       } else {
         readStatement.textContent = "";
@@ -73,41 +72,51 @@ class Library {
     this.bookContainer.innerHTML = "";
 
     this.myLibrary.forEach((book, index) => {
-      const bookCard = document.createElement("div");
-      bookCard.classList.add("book");
-      const titleElement = document.createElement("p");
-      titleElement.textContent = book.title;
-      const authorElement = document.createElement("p");
-      authorElement.textContent = `By: ${book.author}`;
-      const pagesElement = document.createElement("p");
-      pagesElement.textContent = `${book.pages} pages`;
-      const readElement = document.createElement("p");
-      readElement.textContent = book.read
-        ? "This book has been read"
-        : "This book is unread";
-      const delBook = document.createElement("button");
-      delBook.innerText = "Delete Book";
-      delBook.classList.add("delete");
-      delBook.addEventListener("click", () => {
-        this.deleteBook(index);
-      });
-      const bookRead = document.createElement("button");
-      bookRead.innerText = "Book Read";
-      bookRead.addEventListener("click", () => {
-        this.bookToRead(index);
-      });
-      bookCard.appendChild(titleElement);
-      bookCard.appendChild(authorElement);
-      bookCard.appendChild(pagesElement);
-      bookCard.appendChild(readElement);
-      bookCard.appendChild(delBook);
-      if (!book.read) {
-        bookCard.appendChild(bookRead);
-      }
+      const bookCard = this.createBookCard(book, index);
       this.bookContainer.appendChild(bookCard);
     });
+
     bookCase.appendChild(this.bookContainer);
   }
+
+  createBookCard = (book, index) => {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("bookCard");
+
+    const createTextElement = (text) => {
+      const element = document.createElement("p");
+      element.textContent = text;
+      return element;
+    };
+
+    bookCard.appendChild(createTextElement(book.title));
+    bookCard.appendChild(createTextElement(`By: ${book.author}`));
+    bookCard.appendChild(createTextElement(`${book.pages} pages`));
+
+    const readElement = createTextElement(
+      book.read ? "This book has been read" : "This book is unread"
+    );
+    bookCard.appendChild(readElement);
+
+    const createButton = (text, clickHandler) => {
+      const button = document.createElement("button");
+      button.innerText = text;
+      button.addEventListener("click", clickHandler);
+      return button;
+    };
+
+    bookCard.appendChild(
+      createButton("Delete Book", () => this.deleteBook(index))
+    );
+
+    if (!book.read) {
+      bookCard.appendChild(
+        createButton("Book Read", () => this.bookToRead(index))
+      );
+    }
+
+    return bookCard;
+  };
 
   deleteBook(index) {
     this.myLibrary.splice(index, 1);
@@ -116,9 +125,9 @@ class Library {
 
   bookToRead(index) {
     this.myLibrary[index].read = true;
-    console.log("brc-", this.myLibrary[index].read);
+    //console.log("brc-", this.myLibrary[index].read);
     this.displayBookcase();
-    console.log("brc1-", this.myLibrary[index].read);
+    //console.log("brc1-", this.myLibrary[index].read);
   }
 }
 
