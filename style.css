@@ -61,6 +61,7 @@ body {
 .enter {
   display: flex;
   flex-direction: column;
+  /* gap: 10px; */
   margin-bottom: 0.7em;
 }
 
@@ -99,4 +100,7 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: pink;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

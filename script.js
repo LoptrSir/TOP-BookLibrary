@@ -1,4 +1,5 @@
 // ToP JS Course> Objects and Object constructors>  Book exercise // Aug 2023
+// 10/25/23 I managed to break this when I moved over to classes.
 
 let myLibrary = [
   {
@@ -20,7 +21,6 @@ function addBookToLibrary() {
   const titleInput = document.getElementById("title");
   const authorInput = document.getElementById("author");
   const pagesInput = document.getElementById("pages");
-
   const readInput = document.getElementById("read");
   const title = titleInput.value;
   const author = authorInput.value;

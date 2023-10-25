@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Library</title>
-    <script src="script.js" defer></script>
+    <script src="scriptClass.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,30 +16,31 @@
             <h4 class="enterBook">Enter the details of your book below:</h4>
             <div class="enter">
                 <label for="title">Title</label>
-                <input type="text" id="title">
+                <input type="text" id="title" placeholder="A Fancy Title">
             </div>
             <div class="enter">
                 <label for="author">Author</label>
-                <input type="text" id="author">
+                <input type="text" id="author" placeholder="John Doe">
             </div>
             <div class="enter">
                 <label for="pages">Pages</label>
-                <input type="text" id="pages">
+                <input type="text" id="pages" placeholder="Enter only numbers">
                 <p id="pages-statement" class="error-message"></p>
             </div>
             <div class="enter">
                 <label for="read">Read</label>
-                <input type="text" id="read">
+                <input type="text" id="read" placeholder="Yes/No">
                 <p id="read-statement" class="error-message"></p>
             </div>
             <div>
-                <button onclick="addBookToLibrary()">Add Book</button>
+                <button onclick="myLibraryInstance.addBookToLibrary()">Add Book</button>
             </div>
         </div>
         <div class="bookCase">
-            <div class="libraryHeader">
+         
                 <h4>Library</h4>
-            </div>
+                <!-- <div class="library"></div> -->
+           
         </div>
         <footer>LoptrSir 2023</footer>
     </div>
