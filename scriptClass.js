@@ -50,7 +50,7 @@ class Library {
       readInput.value = "";
       readStatement.textContent = "";
       pagesStatement.textContent = "";
-     } else {
+    } else {
       if (!/^\d+$/.test(pages)) {
         pagesStatement.textContent = "Pages must be a number";
       } else {
@@ -66,14 +66,12 @@ class Library {
   }
 
   displayLibrary() {
-    //make a createBook module for cleaner code
     const bookCase = document.querySelector(".bookCase");
     const existingLibraries = document.querySelectorAll(".library");
     existingLibraries.forEach((existingLibrary) => {
       existingLibrary.remove();
     });
     this.bookContainer.innerHTML = "";
-
     this.myLibrary.forEach((book, index) => {
       const bookCard = document.createElement("div");
       bookCard.classList.add("book");
@@ -93,13 +91,11 @@ class Library {
       delBook.addEventListener("click", () => {
         this.deleteBook(index);
       });
-
       const bookRead = document.createElement("button");
       bookRead.innerText = "Book Read";
       bookRead.addEventListener("click", () => {
         this.bookToRead(index);
       });
-
       bookCard.appendChild(titleElement);
       bookCard.appendChild(authorElement);
       bookCard.appendChild(pagesElement);
@@ -124,7 +120,7 @@ class Library {
     this.displayLibrary();
     console.log("brc1-", this.myLibrary[index].read);
   }
-} //Library class end
+}
 
 const myLibraryInstance = new Library();
 myLibraryInstance.displayLibrary();
