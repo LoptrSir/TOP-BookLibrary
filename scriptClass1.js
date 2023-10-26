@@ -21,9 +21,8 @@ class Library {
         read: false,
       },
     ];
-    this.bookContainer = document.createElement("div");
-    this.bookContainer.classList.add("bookContainer");
-  }
+    this.bookcase = document.createElement("div");
+   }
 
   addBookToLibrary() {
     const titleInput = document.getElementById("title");
@@ -68,15 +67,15 @@ class Library {
   }
 
   displayBookcase() {
-    const bookCase = document.querySelector(".bookCase");
-    this.bookContainer.innerHTML = "";
+    const bookcase = document.querySelector(".bookcase");
+    bookcase.innerHTML = "";
 
     this.myLibrary.forEach((book, index) => {
       const bookCard = this.createBookCard(book, index);
-      this.bookContainer.appendChild(bookCard);
+      bookcase.appendChild(bookCard);
     });
 
-    bookCase.appendChild(this.bookContainer);
+    bookcase.appendChild(this.bookcase);
   }
 
   createBookCard = (book, index) => {
@@ -135,7 +134,7 @@ const myLibraryInstance = new Library();
 myLibraryInstance.displayBookcase();
 
 //   function adjustLibraryHeight() {
-//     const bookCase = document.querySelector(".bookCase");
+//     const bookcase = document.querySelector(".bookCase");
 //     const library = document.querySelector(".library");
 //     const availableHeight = bookCase.offsetHeight - 33;
 //     library.style.maxHeight = `${availableHeight}px`;

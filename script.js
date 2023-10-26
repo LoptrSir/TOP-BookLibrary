@@ -59,7 +59,7 @@ function addBookToLibrary() {
 }
 
 function displayLibrary() {
-  const bookCase = document.querySelector(".bookCase");
+  const bookcase = document.querySelector(".c");
 
   const existingLibraries = document.querySelectorAll(".library");
   existingLibraries.forEach((existingLibrary) => {
@@ -107,7 +107,7 @@ function displayLibrary() {
 
     libraryContainer.appendChild(bookDetails);
   });
-  bookCase.appendChild(libraryContainer);
+  c.appendChild(libraryContainer);
 }
 
 displayLibrary();
@@ -124,9 +124,9 @@ function bookToRead(index) {
 }
 
 function adjustLibraryheight() {
-  const bookCase = document.querySelector(".bookCase");
+  const c = document.querySelector(".c");
   const library = document.querySelector(".library");
-  const availableHeight = bookCase.offsetHeight - 33;
+  const availableHeight = c.offsetHeight - 33;
   library.style.maxHeight = `${availableHeight}px`;
 }
 
